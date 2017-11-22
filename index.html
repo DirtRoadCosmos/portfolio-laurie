@@ -1619,30 +1619,31 @@
     <script type="text/javascript">
       $(document).ready(function() {
         var hash = window.location.hash.substr(1);
-        $.magnificPopup.open({
-          items: {
-            src: '#' + hash
-          }
+        if (hash.length > 0) {
+          $.magnificPopup.open({
+            items: {
+              src: '#' + hash
+            }
+          });
+          setTimeout(function() {
+            if (history.pushState) {
+              window.history.pushState("", "Laurie Smith", "/portfolio-laurie/");
+            } else {
+              document.location.href = "/portfolio-laurie/";
+            }
+          }, 1000);
+        }
+        $('.popup-with-zoom-anim').magnificPopup({
+          type: 'inline',
+          fixedContentPos: false,
+          fixedBgPos: true,
+          overflowY: 'auto',
+          closeBtnInside: true,
+          preloader: false,
+          midClick: true,
+          removalDelay: 300,
+          mainClass: 'my-mfp-zoom-in',
         });
-        setTimeout(function() {
-          if (history.pushState) {
-            window.history.pushState("", "Laurie Smith", "/portfolio-laurie/");
-          } else {
-            document.location.href = "/portfolio-laurie/";
-          }
-        }, 1000);
-      }
-      $('.popup-with-zoom-anim').magnificPopup({
-        type: 'inline',
-        fixedContentPos: false,
-        fixedBgPos: true,
-        overflowY: 'auto',
-        closeBtnInside: true,
-        preloader: false,
-        midClick: true,
-        removalDelay: 300,
-        mainClass: 'my-mfp-zoom-in',
-      });
       });
     </script>
 
